@@ -47480,6 +47480,18 @@ MA_API ma_result ma_waveform_set_frequency(ma_waveform* pWaveform, double freque
     return MA_SUCCESS;
 }
 
+MA_API ma_result ma_waveform_set_type(ma_waveform* pWaveform, ma_waveform_type type)
+{
+    if (pWaveform == NULL) {
+        return MA_INVALID_ARGS;
+    }
+
+    pWaveform->config.type = type;
+    ma_waveform__update_advance(pWaveform);
+
+    return MA_SUCCESS;
+}
+
 MA_API ma_result ma_waveform_set_sample_rate(ma_waveform* pWaveform, ma_uint32 sampleRate)
 {
     if (pWaveform == NULL) {
